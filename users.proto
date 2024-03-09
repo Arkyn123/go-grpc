@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package users;
+
+option go_package="./users";
+
+service UsersService{
+   rpc Create(CreateRequest) returns (User);
+   rpc FindAll(Empty) returns (Users);
+   rpc FindById(FindByIdRequest) returns (User);
+}
+
+message CreateRequest{
+    string name = 1;
+}
+
+message User{
+    int32 id = 1;
+    string name = 2;
+}
+
+message Empty {}
+
+message Users {
+    repeated User users = 1;
+}
+
+message FindByIdRequest{
+    int32 id = 1;
+}
